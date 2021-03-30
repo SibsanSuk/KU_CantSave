@@ -7,6 +7,7 @@ public class Hero : MonoBehaviour
     Rigidbody rb;
     public float speed = 1f;
     public float jumpPower = 5f;
+    public AudioSource audioJump;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -20,8 +21,10 @@ public class Hero : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             print("Jump");
-            rb.AddForce(Vector3.up * jumpPower * Time.deltaTime, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+            audioJump.Play();
         }
+        
     }
 
     void FixedUpdate()
